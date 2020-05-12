@@ -26,6 +26,7 @@ class list
         cursor=cursor->next;
     }
     void print();
+    ~list();
 };
 
 void list::prepend(int n)
@@ -66,4 +67,14 @@ int main()
     cout<<"\nList b :";
     b.print();
     return 0;
+}
+list::~list()
+{
+    cursor = head;
+    while(cursor != nullptr)
+    {
+        cursor = head->next;
+        delete head;
+        head = cursor;
+    }
 }
